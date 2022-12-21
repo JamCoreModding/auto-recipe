@@ -4,7 +4,7 @@ plugins {
 	id("org.cadixdev.licenser") version "0.6.+"
 }
 
-//apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/quilt/publishing.gradle.kts")
+apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/quilt/publishing.gradle.kts")
 apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/quilt/misc.gradle.kts")
 
 val mod_version: String by project
