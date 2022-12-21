@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "io.github.jamalam360",
+    "id": "autorecipe_testmod",
+    "version": "UNVERSIONED",
+    "metadata": {
+      "name": "Autorecipe Test Mod",
+      "description": "Auto Recipe's Test mod",
+      "license": "MIT"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "io.github.jamalam360.autorecipe.testmod.TestmodInit"
+    },
+    "depends": [
+      {
+        "id": "autorecipe",
+        "versions": ">=1.1.0"
+      }
+    ]
+  }
+}

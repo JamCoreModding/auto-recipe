@@ -1,0 +1,12 @@
+{
+  "type": "autorecipe_testmod:test_recipe",
+  "input": {
+    "item": "minecraft:iron_ingot",
+    "count": 3
+  },
+  "output": {
+    "item": "minecraft:stick",
+    "count": 32
+  },
+  "time": 100
+}
