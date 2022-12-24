@@ -40,13 +40,23 @@ public class TestmodInit implements ModInitializer {
 
     @Override
     public void onInitialize(ModContainer mod) {
-        RecipeType<TestRecipe> type = AutoRecipeRegistry.registerRecipeSerializer(new Identifier("autorecipe_testmod", "test_recipe"), TestRecipe::new);
+        RecipeType<TestRecipe> type1 = AutoRecipeRegistry.registerRecipeSerializer(new Identifier("autorecipe_testmod", "test_recipe"), TestRecipe::new);
+        RecipeType<TestInheritedRecipe> type2 = AutoRecipeRegistry.registerRecipeSerializer(new Identifier("autorecipe_testmod", "inherited_recipe"), TestInheritedRecipe::new);
+
 
         UseBlockCallback.EVENT.register(((player, world, hand, hitResult) -> {
             if (!world.isClient && world.getBlockState(hitResult.getBlockPos()).isOf(Blocks.IRON_BLOCK)) {
-                List<TestRecipe> recipes = world.getRecipeManager().getAllMatches(type, new SimpleInventory(1), world);
+                List<TestRecipe> recipes = world.getRecipeManager().getAllMatches(type1, new SimpleInventory(1), world);
 
                 for (TestRecipe recipe : recipes) {
+                    player.sendMessage(Text.literal(recipe.toString()), false);
+                }
+
+                return ActionResult.SUCCESS;
+            } else if (!world.isClient && world.getBlockState(hitResult.getBlockPos()).isOf(Blocks.COPPER_BLOCK)) {
+                List<TestInheritedRecipe> recipes = world.getRecipeManager().getAllMatches(type2, new SimpleInventory(1), world);
+
+                for (TestInheritedRecipe recipe : recipes) {
                     player.sendMessage(Text.literal(recipe.toString()), false);
                 }
 

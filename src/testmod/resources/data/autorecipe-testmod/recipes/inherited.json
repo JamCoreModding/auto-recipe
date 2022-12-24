@@ -1,0 +1,12 @@
+{
+  "type": "autorecipe_testmod:inherited_recipe",
+  "subClassStack": {
+    "item": "minecraft:iron_ingot",
+    "count": 3
+  },
+  "baseClassStack": {
+    "item": "minecraft:stick",
+    "count": 32
+  },
+  "time": 100
+}

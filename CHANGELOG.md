@@ -1,5 +1,6 @@
 ## Changelog
 
-- Update to 1.19.2, on Quilt.
-- Support the Quilt recipe API.
-- Infer `RecipeVar` names if they are not specified.
+- Fields on both the class and the superclasses of the recipe class are now serialized (before,
+  superclass fields were not recognised).
+
+[Full Changelog](https://github.com/JamCoreModding/auto-recipe/compare/1.1.0...1.1.1)

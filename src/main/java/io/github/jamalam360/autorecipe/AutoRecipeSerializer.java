@@ -30,11 +30,13 @@ import com.google.common.collect.Sets;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -70,7 +72,9 @@ public class AutoRecipeSerializer<T extends Recipe<?>> implements QuiltRecipeSer
     public AutoRecipeSerializer(Function<Identifier, T> constructor, Class<T> clazz, Identifier id) {
         this.constructor = constructor;
         namespace = id.getNamespace();
-        Field[] fields = clazz.getDeclaredFields();
+        Set<Field> fields = new ObjectArraySet<>();
+        fields.addAll(Arrays.stream(clazz.getDeclaredFields()).toList());
+        fields.addAll(Arrays.stream(clazz.getFields()).toList());
 
         for (Field field : fields) {
             RecipeVar annot = field.getAnnotation(RecipeVar.class);
