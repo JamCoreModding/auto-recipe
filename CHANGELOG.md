@@ -1,9 +1,3 @@
 ## Changelog
 
-### Features
-
-### Fixes
-
-Closed issues: None.
-
-[Full Changelog](https://github.com/JamCoreModding/auto-recipe/compare/...)
+Update to ensure 1.20.x support.

@@ -50,9 +50,9 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.quiltmc.qsl.recipe.api.serializer.QuiltRecipeSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A 'generated' serializer for Auto Recipes.
@@ -64,7 +64,7 @@ import org.quiltmc.qsl.recipe.api.serializer.QuiltRecipeSerializer;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class AutoRecipeSerializer<T extends Recipe<?>> implements QuiltRecipeSerializer<T> {
 
-    private static final Logger LOGGER = LogManager.getLogger("autorecipe");
+    private static final Logger LOGGER = LoggerFactory.getLogger("autorecipe");
     private final Function<Identifier, T> constructor;
     private final Map<RecipeVarData, Field> variables = new LinkedHashMap<>();
     private final String namespace;

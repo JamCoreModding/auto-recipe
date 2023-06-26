@@ -28,6 +28,7 @@ import io.github.jamalam360.autorecipe.AutoSerializedRecipe;
 import io.github.jamalam360.autorecipe.RecipeVar;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.world.World;
 
 public class TestRecipe extends AutoSerializedRecipe<Inventory> {
@@ -49,12 +50,12 @@ public class TestRecipe extends AutoSerializedRecipe<Inventory> {
     }
 
     @Override
-    public ItemStack craft(Inventory inventory) {
+    public ItemStack craft(Inventory inventory, DynamicRegistryManager manager) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public ItemStack getOutput() {
+    public ItemStack getResult(DynamicRegistryManager manager) {
         return this.output;
     }
 }

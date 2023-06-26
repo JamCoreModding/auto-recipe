@@ -1,11 +1,11 @@
 plugins {
-	id("org.quiltmc.loom") version "0.12.+"
+	id("org.quiltmc.loom") version "1.2.+"
 	id("io.github.p03w.machete") version "1.+"
 	id("org.cadixdev.licenser") version "0.6.+"
 }
 
-apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/quilt/publishing.gradle.kts")
-apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/quilt/misc.gradle.kts")
+apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/8afb77e9a6a7bedf9247974fe0e296032d9fbbf2/publishing.gradle.kts")
+apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/8afb77e9a6a7bedf9247974fe0e296032d9fbbf2/misc.gradle.kts")
 
 val mod_version: String by project
 
@@ -51,7 +51,7 @@ sourceSets {
 }
 
 loom {
-	runtimeOnlyLog4j = true
+	runtimeOnlyLog4j.set(true)
 
 	runs {
 		create("testClient") {

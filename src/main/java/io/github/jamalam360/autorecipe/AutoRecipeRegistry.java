@@ -31,10 +31,11 @@ import java.util.function.Supplier;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The main interface to Auto Recipe
@@ -42,7 +43,7 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings({"unchecked", "unused"})
 public class AutoRecipeRegistry {
 
-    private static final Logger LOGGER = LogManager.getLogger("autorecipe");
+    private static final Logger LOGGER = LoggerFactory.getLogger("autorecipe");
     private static final Identifier AUTO_CLASS = new Identifier("auto", "class");
     private static final Map<Class<? extends Recipe<?>>, AutoRecipeSerializer<?>> RECIPE_SERIALIZERS = new HashMap<>();
     private static final Map<Class<? extends Recipe<?>>, RecipeType<?>> RECIPE_TYPES = new HashMap<>();
@@ -78,8 +79,8 @@ public class AutoRecipeRegistry {
 
         RECIPE_SERIALIZERS.put(clazz, serializer);
         RECIPE_TYPES.put(clazz, type);
-        Registry.register(Registry.RECIPE_TYPE, id, type);
-        Registry.register(Registry.RECIPE_SERIALIZER, id, serializer);
+        Registry.register(Registries.RECIPE_TYPE, id, type);
+        Registry.register(Registries.RECIPE_SERIALIZER, id, serializer);
 
         return type;
     }

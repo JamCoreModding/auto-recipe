@@ -33,9 +33,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
-import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.ApiStatus.Internal;
 
 @Internal
@@ -116,17 +116,17 @@ public class DefaultRecipeVarSerializers {
               element -> {
                   if (JsonHelper.isString(element)) {
                       Identifier id = new Identifier(element.getAsString());
-                      return new ItemStack(Registry.ITEM.get(id));
+                      return new ItemStack(Registries.ITEM.get(id));
                   } else {
                       JsonObject json = element.getAsJsonObject();
                       Identifier id = new Identifier(JsonHelper.getString(json, "item"));
                       int count = JsonHelper.getInt(json, "count", 1);
-                      return new ItemStack(Registry.ITEM.get(id), count);
+                      return new ItemStack(Registries.ITEM.get(id), count);
                   }
               },
               stack -> {
                   JsonObject obj = new JsonObject();
-                  obj.add("item", new JsonPrimitive(Registry.ITEM.getId(stack.getItem()).toString()));
+                  obj.add("item", new JsonPrimitive(Registries.ITEM.getId(stack.getItem()).toString()));
                   obj.add("count", new JsonPrimitive(stack.getCount()));
                   return obj;
               },
@@ -142,10 +142,10 @@ public class DefaultRecipeVarSerializers {
         ));
 
         AutoRecipeRegistry.registerGlobalVariableSerializer(Block.class, newSerializer(
-              element -> Registry.BLOCK.get(new Identifier(element.getAsString())),
-              block -> new JsonPrimitive(Registry.BLOCK.getId(block).toString()),
-              buf -> Registry.BLOCK.get(buf.readIdentifier()),
-              (buf, value) -> buf.writeIdentifier(Registry.BLOCK.getId(value))
+              element -> Registries.BLOCK.get(new Identifier(element.getAsString())),
+              block -> new JsonPrimitive(Registries.BLOCK.getId(block).toString()),
+              buf -> Registries.BLOCK.get(buf.readIdentifier()),
+              (buf, value) -> buf.writeIdentifier(Registries.BLOCK.getId(value))
         ));
     }
 

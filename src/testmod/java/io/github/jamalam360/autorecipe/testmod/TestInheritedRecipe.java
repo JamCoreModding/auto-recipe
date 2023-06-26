@@ -27,6 +27,7 @@ package io.github.jamalam360.autorecipe.testmod;
 import io.github.jamalam360.autorecipe.RecipeVar;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.world.World;
 
 public class TestInheritedRecipe extends AbstractTestInheritedRecipe {
@@ -39,12 +40,12 @@ public class TestInheritedRecipe extends AbstractTestInheritedRecipe {
     }
 
     @Override
-    public ItemStack craft(Inventory inventory) {
+    public ItemStack craft(Inventory inventory, DynamicRegistryManager manager) {
         return null;
     }
 
     @Override
-    public ItemStack getOutput() {
+    public ItemStack getResult(DynamicRegistryManager manager) {
         return null;
     }
 
