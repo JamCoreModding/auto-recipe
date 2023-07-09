@@ -1,3 +1,3 @@
 ## Changelog
 
-Update to ensure 1.20.x support.
+Fix dependency range for Minecraft.
